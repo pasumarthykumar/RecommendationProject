@@ -1,0 +1,70 @@
+
+sqoop import \
+  --connect "jdbc:mysql://localhost:3306/recommendation?useSSL=false" \
+  --username=root \
+  --password=bigdata \
+  --query 'select * from data WHERE $CONDITIONS limit 1000' \
+  --as-textfile \
+  --fields-terminated-by '\t' \
+  --delete-target-dir \
+  --target-dir=/recommendation/data \
+  -m 1
+
+
+sqoop import \
+  --connect "jdbc:mysql://localhost:3306/recommendation?useSSL=false" \
+  --username=root \
+  --password=bigdata \
+  --table genre \
+  --as-textfile \
+  --fields-terminated-by '|' \
+  --delete-target-dir \
+  --target-dir=/recommendation/genre \
+  -m 1
+
+
+sqoop import \
+  --connect "jdbc:mysql://localhost:3306/recommendation?useSSL=false" \
+  --username=root \
+  --password=bigdata \
+  --table users \
+  --as-textfile \
+  --fields-terminated-by '|' \
+  --delete-target-dir \
+  --target-dir=/recommendation/users \
+  -m 1
+
+
+sqoop import \
+  --connect "jdbc:mysql://localhost:3306/recommendation?useSSL=false" \
+  --username=root \
+  --password=bigdata \
+  --table items \
+  --as-textfile \
+  --fields-terminated-by '|' \
+  --delete-target-dir \
+  --target-dir=/recommendation/items \
+  -m 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
